@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-do-list</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <h3>To-do-list</h3>
+      <input type="text" placeholder="New Item" id="input-txt" value="" />
+      <button id="input-btn">Add</button>
+
+      <div>
+        <ol id="box"></ol>
+      </div>
+    </div>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
+      * {
+        background-color: #240411;
+      }
+
+      .main {
+        font-family: "Indie Flower", cursive;
+        width: 500px;
+        height: auto;
+        margin-top: 30px;
+        margin-left: 30px;
+        padding: 10px;
+        text-align: center;
+        justify-content: center;
+        font-size: 40px;
+        font-weight: bold;
+        letter-spacing: 5px;
+        color: white;
+        border: 7px double #684a5c;
+        border-radius: 20px;
+        box-shadow: 0px 0px 17px 7px #684a5c;
+      }
+
+      #input-txt {
+        font-family: "Indie Flower", cursive;
+        width: 70%;
+        padding: 15px;
+        font-size: 25px;
+        font-weight: bold;
+        letter-spacing: 5px;
+        color: #ffffff;
+        background: #362d33;
+        border-radius: 5px;
+      }
+
+      #input-btn {
+        font-family: "Indie Flower", cursive;
+        padding: 8px;
+        margin-left: 20px;
+        font-size: 25px;
+        font-weight: bold;
+        letter-spacing: 5px;
+        color: #ffffff;
+        background-color: #bcdd00;
+        border-radius: 8px;
+      }
+
+      #box li {
+        width: 90%;
+        height: 30px;
+        margin-top: 15px;
+        margin-bottom: 10px;
+        padding: 10px;
+        text-align: left;
+        font-size: 20px;
+        color: #ffffff;
+        border: 2px solid #4e2535;
+        background-color: #1e0021d1;
+        border-radius: 5px;
+      }
+
+      .done {
+        width: 25px;
+        height: 25px;
+        float: right;
+        background-color: #ff0000;
+        color: #000000;
+        border-radius: 5px;
+      }
+    </style>
+
+    <script>
+      $(function () {
+        $("#input-btn").click(function () {
+          var inform = $("#input-txt").val();
+          if (inform !== "") {
+            var part = $("<li></li>").text(inform);
+            $(part).append("<button class='done'>X</button>");
+            $("#box").append(part);
+            $("#input-txt").val("");
+            $(".done").click(function () {
+              $(this).parent().remove();
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
